@@ -99,14 +99,30 @@
 
       <section id="about" class="section about" aria-labelledby="about-title">
         <div class="section-inner">
-          <header class="section-head">
-            <h2 id="about-title" class="section-title reveal" data-reveal>About</h2>
-            <p class="section-sub reveal" data-reveal>
-              Hi, I’m <strong>Simon Boeckner</strong> — a chemical engineering student
-              obsessed with clean separations, honest models, and hardware that
-              actually works in the fume hood.
-            </p>
-          </header>
+          <div class="about-intro">
+            <header class="section-head about-head">
+              <h2 id="about-title" class="section-title reveal" data-reveal>About</h2>
+              <p class="section-sub reveal" data-reveal>
+                Hi, I’m <strong>Simon Boeckner</strong> — a chemical engineering student
+                obsessed with clean separations, honest models, and hardware that
+                actually works in the fume hood.
+              </p>
+            </header>
+            <figure class="headshot headshot--about reveal" data-reveal>
+              <div class="headshot-frame">
+                <!-- Swap src to images/headshot.jpg (or .webp) when you have a photo -->
+                <img
+                  class="headshot-img"
+                  src="images/headshot.svg"
+                  alt="Portrait of Simon Boeckner"
+                  width="280"
+                  height="280"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </figure>
+          </div>
           <div class="about-grid">
             <div class="about-card reveal" data-reveal>
               <h3>What I’m into</h3>

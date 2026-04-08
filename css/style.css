@@ -300,7 +300,7 @@ main {
   }
   .hero-visual {
     order: -1;
-    max-width: 280px;
+    max-width: min(280px, 100%);
     margin: 0 auto;
   }
 }
@@ -390,6 +390,44 @@ main {
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(120, 200, 255, 0.25);
+}
+
+/* Headshot */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headshot {
+  margin: 0;
+  width: 100%;
+  max-width: 240px;
+}
+
+.headshot--about {
+  max-width: min(260px, 100%);
+  justify-self: end;
+  align-self: center;
+}
+
+.headshot-frame {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(62, 232, 199, 0.35);
+  box-shadow: 0 0 0 1px rgba(139, 123, 255, 0.15), 0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(62, 232, 199, 0.12);
+  background: var(--bg-elevated);
+}
+
+.headshot-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 /* Molecule card */
@@ -513,6 +551,51 @@ main {
 /* —— About —— */
 .about {
   background: linear-gradient(180deg, transparent, rgba(12, 17, 28, 0.5));
+}
+
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 280px);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2rem);
+  border-bottom: 1px solid rgba(120, 200, 255, 0.08);
+}
+
+.about-head {
+  margin-bottom: 0;
+  max-width: 38rem;
+}
+
+.about-head .section-title {
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .about-intro {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding-bottom: clamp(1.25rem, 4vw, 1.75rem);
+  }
+
+  .about-head {
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .headshot--about {
+    justify-self: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .about-intro .headshot--about {
+    margin-top: 0.35rem;
+  }
 }
 
 .about-grid {

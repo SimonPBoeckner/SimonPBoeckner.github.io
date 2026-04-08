@@ -1,1 +1,107 @@
+# Deploy static content to GitHub Pages, with PR checks and run summaries
+name: Deploy static content to Pages
 
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      note:
+        description: Optional note for this manual run (shown in the job summary)
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify site files
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run context
+        run: |
+          echo "## Run context" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Field | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| --- | --- |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Event | \`${{ github.event_name }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Ref | \`${{ github.ref }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| SHA | \`${{ github.sha }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Actor | @${{ github.actor }} |" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Check required files
+        run: |
+          set -euo pipefail
+          missing=0
+          for f in index.html css/style.css js/main.js; do
+            if [[ ! -f "$f" ]]; then
+              echo "::error file=$f::Required file missing"
+              missing=1
+            fi
+          done
+          if [[ "$missing" -ne 0 ]]; then
+            exit 1
+          fi
+          echo "All required paths present."
+
+      - name: Site layout summary
+        run: |
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "## Site layout (top level)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          find . -maxdepth 2 -not -path './.git*' | sort >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: verify
+    if: github.event_name != 'pull_request'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Deployment summary
+        if: success()
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          echo "## Deployment complete" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Live URL:** $PAGE_URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Commit:** \`${{ github.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> "$GITHUB_STEP_SUMMARY"
+          if [[ -n "${{ inputs.note }}" ]]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Manual run note:** ${{ inputs.note }}" >> "$GITHUB_STEP_SUMMARY"
+          fi
