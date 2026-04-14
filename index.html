@@ -41,6 +41,25 @@
           <a href="#projects">Projects</a>
           <a href="#path">Path</a>
           <a href="#contact" class="nav-cta">Contact</a>
+          <button
+            type="button"
+            class="theme-toggle nav-theme-toggle"
+            aria-label="Toggle dark/light mode"
+            title="Toggle theme"
+          >
+            <svg class="theme-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle class="sun-icon" cx="12" cy="12" r="5"></circle>
+              <line class="sun-icon" x1="12" y1="1" x2="12" y2="3"></line>
+              <line class="sun-icon" x1="12" y1="21" x2="12" y2="23"></line>
+              <line class="sun-icon" x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line class="sun-icon" x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line class="sun-icon" x1="1" y1="12" x2="3" y2="12"></line>
+              <line class="sun-icon" x1="21" y1="12" x2="23" y2="12"></line>
+              <line class="sun-icon" x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line class="sun-icon" x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              <path class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
         </nav>
       </div>
     </header>
@@ -49,15 +68,15 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow reveal" data-reveal>Chemical engineering</p>
+            <p class="eyebrow reveal" data-reveal>Chemical Engineering & Robotics</p>
             <h1 id="hero-title" class="hero-title reveal" data-reveal>
-              <span class="line">Molecules,</span>
-              <span class="line accent">processes,</span>
+              <span class="line">Code,</span>
+              <span class="line accent">systems,</span>
               <span class="line">impact.</span>
             </h1>
             <p class="hero-lede reveal" data-reveal>
-              I design and analyze systems where mass, energy, and kinetics meet
-              real-world constraints — from separations to sustainability.
+              I build computational tools and robotic systems that solve real problems.
+              From vision algorithms to process simulation, I bring ideas to life through code.
             </p>
             <div class="hero-actions reveal" data-reveal>
               <a href="#projects" class="btn btn-primary">View work</a>
@@ -67,16 +86,20 @@
           <div class="hero-visual reveal" data-reveal aria-hidden="true">
             <div class="molecule-card">
               <svg class="molecule-svg" viewBox="0 0 200 200" fill="none">
-                <circle cx="100" cy="40" r="12" class="atom a1" />
-                <circle cx="160" cy="100" r="12" class="atom a2" />
-                <circle cx="100" cy="160" r="12" class="atom a3" />
-                <circle cx="40" cy="100" r="12" class="atom a4" />
-                <line x1="100" y1="52" x2="148" y2="88" class="bond" />
-                <line x1="112" y1="100" x2="148" y2="100" class="bond" />
-                <line x1="100" y1="148" x2="148" y2="112" class="bond" />
-                <line x1="88" y1="100" x2="52" y2="100" class="bond" />
-                <line x1="100" y1="148" x2="52" y2="112" class="bond" />
-                <line x1="100" y1="52" x2="52" y2="88" class="bond" />
+                <!-- Bonds -->
+                <line x1="100" y1="58" x2="100" y2="112" stroke="currentColor" stroke-width="2" />
+                <line x1="112" y1="100" x2="142" y2="100" stroke="currentColor" stroke-width="2" />
+                <line x1="100" y1="112" x2="100" y2="142" stroke="currentColor" stroke-width="2" />
+                <line x1="88" y1="100" x2="58" y2="100" stroke="currentColor" stroke-width="2" />
+                
+                <!-- Central atom -->
+                <circle cx="100" cy="100" r="12" fill="#8b7bff" />
+                
+                <!-- Surrounding atoms -->
+                <circle cx="100" cy="50" r="8" fill="#ff6b6b" />
+                <circle cx="150" cy="100" r="8" fill="#4ecdc4" />
+                <circle cx="100" cy="150" r="8" fill="#ffd93d" />
+                <circle cx="50" cy="100" r="8" fill="#95e1d3" />
               </svg>
               <div class="stat-row">
                 <div class="stat">
@@ -103,9 +126,9 @@
             <header class="section-head about-head">
               <h2 id="about-title" class="section-title reveal" data-reveal>About</h2>
               <p class="section-sub reveal" data-reveal>
-                Hi, I’m <strong>Simon Boeckner</strong> — a chemical engineering student
-                obsessed with clean separations, honest models, and hardware that
-                actually works in the fume hood.
+                Hi, I'm <strong>Simon Boeckner</strong> — a developer and maker based in Toronto.
+                I combine chemical engineering fundamentals with software development to create
+                systems that work in the real world.
               </p>
             </header>
             <figure class="headshot headshot--about reveal" data-reveal>
@@ -113,7 +136,7 @@
                 <!-- Swap src to images/headshot.jpg (or .webp) when you have a photo -->
                 <img
                   class="headshot-img"
-                  src="images/headshot.svg"
+                  src="./pic.JPG"
                   alt="Portrait of Simon Boeckner"
                   width="280"
                   height="280"
@@ -127,18 +150,17 @@
             <div class="about-card reveal" data-reveal>
               <h3>What I’m into</h3>
               <ul class="tag-list">
-                <li>Mass &amp; energy balances</li>
-                <li>Reaction engineering</li>
-                <li>Process simulation</li>
-                <li>Green chemistry &amp; circularity</li>
+                <li>Computer vision &amp; robotics</li>
+                <li>Python systems &amp; algorithms</li>
+                <li>Agent-based modeling</li>
+                <li>Process optimization &amp; simulation</li>
               </ul>
             </div>
             <div class="about-card reveal" data-reveal>
               <h3>Currently</h3>
               <p>
-                Undergraduate researcher on heterogeneous catalysis; course team
-                lead for the unit ops lab; building Python tools for our group’s
-                kinetic datasets.
+                Building vision algorithms for robotic systems; exploring agent-based modeling
+                for complex systems; developing tools for process optimization and path finding.
               </p>
             </div>
             <div class="about-card highlight reveal" data-reveal>
@@ -161,24 +183,23 @@
           </header>
           <div class="skill-matrix reveal" data-reveal>
             <article class="skill-pillar">
-              <h3>Simulation &amp; computing</h3>
+              <h3>Languages &amp; frameworks</h3>
               <div class="chips">
-                <span>Aspen Plus</span><span>MATLAB</span><span>Python</span
-                ><span>SciPy / NumPy</span>
+                <span>Python</span><span>C++</span><span>TypeScript</span><span>JavaScript</span>
               </div>
             </article>
             <article class="skill-pillar">
-              <h3>Lab &amp; analysis</h3>
+              <h3>Core skills</h3>
               <div class="chips">
-                <span>GC–MS</span><span>HPLC</span><span>TGA</span
-                ><span>UV-Vis</span>
+                <span>Computer Vision</span><span>Robotics</span><span>Algorithms</span
+                ><span>Simulation</span>
               </div>
             </article>
             <article class="skill-pillar">
-              <h3>Core ChE</h3>
+              <h3>Tools &amp; practice</h3>
               <div class="chips">
-                <span>Separations</span><span>Transport</span><span>Kinetics</span
-                ><span>Thermo</span>
+                <span>Git</span><span>Testing</span><span>Process Design</span
+                ><span>Data Analysis</span>
               </div>
             </article>
           </div>
@@ -190,7 +211,7 @@
           <header class="section-head">
             <h2 id="proj-title" class="section-title reveal" data-reveal>Selected work</h2>
             <p class="section-sub reveal" data-reveal>
-              Course highlights and research snapshots — swap in your real PDFs and repos.
+              Projects from open source, learning, and experimentation. See my full work on <a href="https://github.com/SimonPBoeckner" target="_blank">GitHub</a>.
             </p>
           </header>
           <div class="project-grid">
@@ -199,31 +220,30 @@
               data-reveal
               tabindex="0"
               aria-expanded="false"
-              aria-label="CO₂ hydrogenation kinetics project. Click or press Enter to expand details."
+              aria-label="YAAD project. Click or press Enter to expand details."
             >
               <div class="project-meta">
-                <span class="pill">Research</span>
+                <span class="pill">Computer Vision</span>
                 <span class="year">2025</span>
               </div>
-              <h3>CO₂ hydrogenation kinetics</h3>
+              <h3>YAAD (Apriltag Detector)</h3>
               <p class="project-card__teaser">
-                Packed-bed reactor experiments, Arrhenius fits, and uncertainty
-                bounds for turnover frequency vs. temperature.
+                Yet Another Apriltag Detector — C++ and Python implementations
+                for robust visual fiducial detection in robotics applications.
               </p>
               <div class="project-card__extra-wrap">
                 <div class="project-card__extra-inner">
                   <div class="project-card__extra">
                     <p>
-                      Ran isothermal sweeps at three space velocities; inferred
-                      apparent activation energy with 95% confidence intervals from
-                      replicated trials.
+                      Developed efficient Apriltag detection for robotic vision systems.
+                      Includes both C++ core implementation and Python bindings for easy integration.
                     </p>
                     <ul class="project-card__facts">
-                      <li>Catalyst: supported Ni on Al₂O₃ (lab-prepared batch)</li>
-                      <li>Models: power-law + Langmuir–Hinshelwood screening</li>
-                      <li>Deliverable: poster + raw data package for the group drive</li>
+                      <li>Languages: C++, Python</li>
+                      <li>Applications: Robot pose estimation, camera calibration</li>
+                      <li>Available on GitHub with documentation</li>
                     </ul>
-                    <a href="#" class="project-link" tabindex="-1">Poster / slides →</a>
+                    <a href="https://github.com/SimonPBoeckner/YAAD" class="project-link" target="_blank">View on GitHub →</a>
                   </div>
                 </div>
               </div>
@@ -240,31 +260,31 @@
               data-reveal
               tabindex="0"
               aria-expanded="false"
-              aria-label="Distillation sequence optimization project. Click or press Enter to expand details."
+              aria-label="Agent-Based Modelling project. Click or press Enter to expand details."
             >
               <div class="project-meta">
-                <span class="pill">Design</span>
-                <span class="year">2024</span>
+                <span class="pill">Simulation</span>
+                <span class="year">2025</span>
               </div>
-              <h3>Distillation sequence optimization</h3>
+              <h3>Agent-Based Modelling</h3>
               <p class="project-card__teaser">
-                Aspen-based separation of azeotropic mixture; heat integration and
-                TAC comparison for three candidate flowsheets.
+                Framework for simulating complex systems through autonomous agents.
+                Useful for studying emergent behavior and system dynamics.
               </p>
               <div class="project-card__extra-wrap">
                 <div class="project-card__extra-inner">
                   <div class="project-card__extra">
                     <p>
-                      Compared direct sequence vs. pressure-swing variants; ranked
-                      options on capital, utilities, and operability heuristics from
-                      Turton-style factors.
+                      Built a Python-based agent simulation framework supporting various
+                      configurations and interaction models. Great for exploring how local
+                      rules create global patterns.
                     </p>
                     <ul class="project-card__facts">
-                      <li>UNIFAC / NRTL parameter review for azeotrope tracing</li>
-                      <li>Heat integration: pinch-style targeting for condenser/reboiler duties</li>
-                      <li>Report: 12-page memo + PFD set for final design review</li>
+                      <li>Language: Python</li>
+                      <li>Focus: Flexibility and visualization</li>
+                      <li>Use cases: Environmental modeling, economic systems, social dynamics</li>
                     </ul>
-                    <a href="#" class="project-link" tabindex="-1">Design memo PDF →</a>
+                    <a href="https://github.com/SimonPBoeckner/Agent-Based-Modelling" class="project-link" target="_blank">View on GitHub →</a>
                   </div>
                 </div>
               </div>
@@ -287,30 +307,30 @@
                 <span class="pill">Code</span>
                 <span class="year">2024</span>
               </div>
-              <h3>Tracer RTD toolkit</h3>
+              <h3>Path-Finding Simulator</h3>
               <p class="project-card__teaser">
-                Python notebook pipeline: E(t) from step inputs, convolution checks,
-                and model discrimination for tanks-in-series.
+                Visualization and simulation of pathfinding algorithms.
+                Explore how different approaches solve navigation problems.
               </p>
               <div class="project-card__extra-wrap">
                 <div class="project-card__extra-inner">
                   <div class="project-card__extra">
                     <p>
-                      Wrapped smoothing + normalization so the group can compare
-                      pilot runs without re-deriving the spreadsheet macros each time.
+                      Interactive simulator for comparing pathfinding strategies including
+                      A*, Dijkstra, and BFS. Useful for learning how algorithms navigate
+                      complex environments.
                     </p>
                     <ul class="project-card__facts">
-                      <li>Deps: NumPy, SciPy, pandas; plots in Matplotlib</li>
-                      <li>Validation: analytic PFR/ CSTR limits and synthetic noise tests</li>
-                      <li>MIT-style license; CLI + notebook entry points</li>
+                      <li>Language: Python</li>
+                      <li>Features: Multiple algorithms, obstacle handling, visualization</li>
+                      <li>Educational: Great for algorithm comparison and optimization</li>
                     </ul>
                     <a
-                      href="https://github.com/SimonPBoeckner"
+                      href="https://github.com/SimonPBoeckner/Path-Finding-Simulator"
                       class="project-link"
-                      tabindex="-1"
                       target="_blank"
                       rel="noopener noreferrer"
-                      >GitHub profile →</a
+                      >View on GitHub →</a
                     >
                   </div>
                 </div>
@@ -383,7 +403,7 @@
               >LinkedIn</a
             >
             <a
-              class="btn btn-ghost"
+              class="btn btn-primary"
               href="https://github.com/SimonPBoeckner"
               target="_blank"
               rel="noopener noreferrer"

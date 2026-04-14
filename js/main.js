@@ -1,6 +1,39 @@
 (function () {
   "use strict";
 
+  /* —— Theme Toggle —— */
+  function initTheme() {
+    const stored = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = stored || (prefersDark ? "dark" : "light");
+    applyTheme(theme);
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    updateCanvasOpacity();
+  }
+
+  function updateCanvasOpacity() {
+    const canvas = document.getElementById("bg-canvas");
+    if (canvas) {
+      const theme = document.documentElement.getAttribute("data-theme") || "dark";
+      canvas.style.opacity = theme === "dark" ? "0.75" : "0.15";
+    }
+  }
+
+  const themeToggle = document.querySelector(".theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") || "dark";
+      const next = current === "dark" ? "light" : "dark";
+      applyTheme(next);
+    });
+  }
+
+  initTheme();
+
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
@@ -96,12 +129,12 @@
       let gridBuckets = [];
 
       const MAX_DIST = 120;
-      const LINE_ALPHA = 0.07;
+      const LINE_ALPHA = 0.15;
 
       function computeNodeCount() {
         const base = Math.floor((window.innerWidth / 28) * 1.2);
         const oldCap = Math.min(55, Math.max(1, base));
-        return Math.min(1000, Math.max(500, oldCap * 100));
+        return Math.min(300, Math.max(100, Math.floor(oldCap * 3)));
       }
 
       function resize() {
@@ -197,7 +230,7 @@
         }
 
         for (const n of nodes) {
-          ctx.fillStyle = "rgba(139, 123, 255, 0.4)";
+          ctx.fillStyle = "rgba(139, 123, 255, 0.7)";
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
           ctx.fill();
